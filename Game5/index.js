@@ -19,7 +19,7 @@ async function addSongLink() {
 
         while (true) {
             const page = Math.floor(Math.random() * 10) + 1
-            const url = `http://ws.audioscrobbler.com/2.0/?method=chart.getTopTracks&api_key=${apiKey}&limit=${limit}&page=${page}&format=json`
+            const url = `https://ws.audioscrobbler.com/2.0/?method=chart.getTopTracks&api_key=${apiKey}&limit=${limit}&page=${page}&format=json`
 
             try {
                 const response = await fetch(url)
