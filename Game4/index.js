@@ -7,7 +7,7 @@ gasButton.addEventListener('click', getFood);
 trashButton.addEventListener('click', getFood);
 
 async function getFood() {
-  const apiKey = '6146cfac4cc74bba86d9712c11b7efd1'; // Replace with your Spoonacular API key
+  const apiKey = process.env.FOOD_API
   const apiUrl = 'https://api.spoonacular.com/recipes/random';
 
   try {

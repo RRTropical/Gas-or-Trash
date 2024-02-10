@@ -12,7 +12,7 @@ trashButton.addEventListener('click', () => {
 })
 
 async function addSongLink() {
-    const apiKey = '67cc20d6ad021446f9696a0cb1922436'
+    const apiKey = process.env.MUSIC_API
 
     async function getRandomLastFmTrackAndEmbedVideo() {
         const limit = 50

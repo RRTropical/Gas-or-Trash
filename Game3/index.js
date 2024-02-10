@@ -7,7 +7,7 @@ gasButton.addEventListener('click', getTVShow);
 trashButton.addEventListener('click', getTVShow);
 
 async function getTVShow() {
-  const apiKey = '43245e4a7672fe10cdaec2ec5bd00037'; // Replace with your actual API key
+  const apiKey = process.env.MOVIE_API
   const apiUrl = 'https://api.themoviedb.org/3/discover/tv';
 
   let isValid = false;
