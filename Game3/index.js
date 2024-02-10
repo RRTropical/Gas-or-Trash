@@ -1,74 +1,74 @@
-const gasButton = document.getElementById('Gas');
-const trashButton = document.getElementById('Trash');
-const gameText = document.getElementById('gameName');
-let figureElement = null;
+const gasButton = document.getElementById('Gas')
+const trashButton = document.getElementById('Trash')
+const gameText = document.getElementById('gameName')
+let figureElement = null
 
-gasButton.addEventListener('click', getTVShow);
-trashButton.addEventListener('click', getTVShow);
+gasButton.addEventListener('click', getTVShow)
+trashButton.addEventListener('click', getTVShow)
 
 async function getTVShow() {
-  const apiKey = process.env.MOVIE_API
-  const apiUrl = 'https://api.themoviedb.org/3/discover/tv';
+  const apiKey = '43245e4a7672fe10cdaec2ec5bd00037'
+  const apiUrl = 'https://api.themoviedb.org/3/discover/tv'
 
-  let isValid = false;
-  let tvData;
+  let isValid = false
+  let tvData
 
   while (!isValid) {
     try {
-      const randomPage = Math.floor(Math.random() * 1000) + 1;
-      const response = await fetch(`${apiUrl}?api_key=${apiKey}&page=${randomPage}&page_size=1`);
+      const randomPage = Math.floor(Math.random() * 1000) + 1
+      const response = await fetch(`${apiUrl}?api_key=${apiKey}&page=${randomPage}&page_size=1`)
       
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Network response was not ok')
       }
 
-      tvData = await response.json();
+      tvData = await response.json()
       if (tvData.results && tvData.results.length > 0) {
-        isValid = true;
+        isValid = true
       }
     } catch (error) {
-      console.error('There was a problem:', error);
+      console.error('There was a problem:', error)
     }
   }
 
-  const randomTVShow = tvData.results[0];
-  const tvId = randomTVShow.id;
-  gameText.innerText = `${randomTVShow.name}`;
+  const randomTVShow = tvData.results[0]
+  const tvId = randomTVShow.id
+  gameText.innerText = `${randomTVShow.name}`
 
-  const screenshotsUrl = `https://api.themoviedb.org/3/tv/${tvId}/images?api_key=${apiKey}`;
-  const screenshotsResponse = await fetch(screenshotsUrl);
+  const screenshotsUrl = `https://api.themoviedb.org/3/tv/${tvId}/images?api_key=${apiKey}`
+  const screenshotsResponse = await fetch(screenshotsUrl)
   if (!screenshotsResponse.ok) {
-    console.error('Failed to fetch TV show screenshots');
-    return;
+    console.error('Failed to fetch TV show screenshots')
+    return
   }
-  const screenshotsData = await screenshotsResponse.json();
-  const screenshots = screenshotsData.backdrops.slice(0, 3);
+  const screenshotsData = await screenshotsResponse.json()
+  const screenshots = screenshotsData.backdrops.slice(0, 3)
 
   // Clear previous images
   if (figureElement) {
-    document.body.removeChild(figureElement);
+    document.body.removeChild(figureElement)
   }
 
-  figureElement = document.createElement('figure');
-  figureElement.style.display = 'flex';
-  figureElement.style.justifyContent = 'center';
-  figureElement.style.alignItems = 'center';
-  figureElement.style.gap = '10px';
+  figureElement = document.createElement('figure')
+  figureElement.style.display = 'flex'
+  figureElement.style.justifyContent = 'center'
+  figureElement.style.alignItems = 'center'
+  figureElement.style.gap = '10px'
 
   screenshots.forEach(screenshot => {
-    const imgElement = document.createElement('img');
-    imgElement.src = `https://image.tmdb.org/t/p/w500/${screenshot.file_path}`;
-    imgElement.alt = 'TV Show Screenshot';
-    imgElement.style.width = '300px';
-    imgElement.style.height = '200px';
+    const imgElement = document.createElement('img')
+    imgElement.src = `https://image.tmdb.org/t/p/w500/${screenshot.file_path}`
+    imgElement.alt = 'TV Show Screenshot'
+    imgElement.style.width = '300px'
+    imgElement.style.height = '200px'
 
     imgElement.addEventListener('load', () => {
-      imgElement.classList.add('loaded');
-    });
+      imgElement.classList.add('loaded')
+    })
 
-    figureElement.appendChild(imgElement);
-  });
+    figureElement.appendChild(imgElement)
+  })
 
-  document.body.appendChild(figureElement);
+  document.body.appendChild(figureElement)
 }
 getTVShow()

@@ -11,7 +11,7 @@ async function getRandomGame() {
         document.body.removeChild(figureElement)
     }
 
-    const key = process.env.GAME_API
+    const key = '0dfc1b8b7b814b3997d47a5395a4c8bb'
     const apiUrl = 'https://api.rawg.io/api/games'
     const randomPage = Math.floor(Math.random() * 1000) + 1
 
