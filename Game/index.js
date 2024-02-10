@@ -11,37 +11,44 @@ async function getRandomGame() {
         document.body.removeChild(figureElement)
     }
 
-    const key = '0dfc1b8b7b814b3997d47a5395a4c8bb'
-    const apiUrl = 'https://api.rawg.io/api/games'
-    const randomPage = Math.floor(Math.random() * 1000) + 1
+    const functionUrl = '/.netlify/functions/fetchGame'
 
-    const response = await fetch(`${apiUrl}?key=${key}&page=${randomPage}&page_size=1`)
-    const data = await response.json()
-    const randomGame = data.results[0]
-    const gameId = randomGame.id
-    gameText.innerText = randomGame.name
-    const screenshotsUrl = `https://api.rawg.io/api/games/${gameId}/screenshots?key=${key}`
-    const response_1 = await fetch(screenshotsUrl)
-    const screenshotsData = await response_1.json()
-    const screenshots = screenshotsData.results.slice(0, 3)
-    figureElement = document.createElement('figure')
-    figureElement.style.display = 'flex'
-    figureElement.style.justifyContent = 'center'
-    figureElement.style.alignItems = 'center'
-    figureElement.style.gap = '10px'
-    screenshots.forEach(screenshot => {
-        const imgElement = document.createElement('img')
-        imgElement.src = screenshot.image
-        imgElement.alt = 'Game Screenshot'
-        imgElement.style.width = '300px'
-        imgElement.style.height = '200px'
+    try {
+        const response = await fetch(functionUrl)
+        const data = await response.json()
+        const randomGame = data.results[0]
+        const gameId = randomGame.id
+        gameText.innerText = randomGame.name
 
-        imgElement.addEventListener('load', () => {
-            imgElement.classList.add('loaded')
+        const screenshotsUrl = `/api/games/${gameId}/screenshots`
+        const responseScreenshots = await fetch(screenshotsUrl)
+        const screenshotsData = await responseScreenshots.json()
+        const screenshots = screenshotsData.results.slice(0, 3)
+
+        figureElement = document.createElement('figure')
+        figureElement.style.display = 'flex'
+        figureElement.style.justifyContent = 'center'
+        figureElement.style.alignItems = 'center'
+        figureElement.style.gap = '10px'
+
+        screenshots.forEach(screenshot => {
+            const imgElement = document.createElement('img')
+            imgElement.src = screenshot.image
+            imgElement.alt = 'Game Screenshot'
+            imgElement.style.width = '300px'
+            imgElement.style.height = '200px'
+
+            imgElement.addEventListener('load', () => {
+                imgElement.classList.add('loaded')
+            })
+
+            figureElement.appendChild(imgElement)
         })
 
-        figureElement.appendChild(imgElement)
-    })
-    document.body.appendChild(figureElement)
+        document.body.appendChild(figureElement)
+    } catch (error) {
+        console.error('Failed to fetch data:', error)
+    }
 }
+
 getRandomGame()
