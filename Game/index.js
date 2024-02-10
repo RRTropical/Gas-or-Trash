@@ -11,7 +11,7 @@ async function getRandomGame() {
         document.body.removeChild(figureElement)
     }
 
-    const functionUrl = '/.netlify/functions/fetchGame'
+    const functionUrl = '/.netlify/functions/game'
 
     try {
         const response = await fetch(functionUrl)
