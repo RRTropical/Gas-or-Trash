@@ -1,0 +1,133 @@
+body {
+    background-color: rgb(26, 25, 25);
+}
+h1{
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    font-size: 3em;
+}
+h2{
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    font-size: 2em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+h3{
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    font-size: 1.5em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+#Gas {
+    background-color: #0ACF41;
+}
+#Trash {
+    background-color: #CC0000;
+}
+#Gas:hover {
+    background-color: #0FFF50;
+    box-shadow: 0px 0px 20px rgba(91, 237, 55, 0.5);
+}
+#Gas:active{
+    background-color: #0A9D34;
+}
+#Trash:hover {
+    background-color: #FF3131;
+    box-shadow: 0px 0px 20px rgba(237, 55, 55, 0.5);
+}
+#Trash:active{
+    background-color: #FF0000;
+}
+#Gas, #Trash {
+    color: white;
+    border-radius: 25px;
+    font-size: 150px;
+    border: none;
+}
+.reaction-panel {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px auto;
+}
+
+.reaction-btn {
+    width: 40%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.reaction-btn button {
+    min-width: 200px;
+    width: auto;
+    min-height: 200px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.reaction-btn button:hover {
+    transform: scale(1.1);
+}
+img {
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out;
+}
+
+img.loaded {
+    opacity: 1;
+}
+#byebye {
+    height: 55px;
+    width: 200px;
+    color: #3b3434;
+    font-size: 20px;
+    background-color: white;
+    border-radius: 50px;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    margin-top: 25px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    position: fixed;
+    bottom: 0;
+    width: 10%;
+}
+#byebye:hover {
+    background-color: lightgray;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+}
+a {
+    color: rgb(255, 255, 255);
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    font-size: 2em;
+    transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+a:hover {
+    transform: scale(1.1);
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+}
+.songLink {
+    justify-content: center;
+    display: flex;
+}
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
