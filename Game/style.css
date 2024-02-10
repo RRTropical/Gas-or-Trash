@@ -5,13 +5,13 @@ h1{
     color: white;
     font-family: 'Rubik', sans-serif;
     text-align: center;
-    font-size: 3em;
+    font-size: 5vw;
 }
 h2{
     color: white;
     font-family: 'Rubik', sans-serif;
     text-align: center;
-    font-size: 2em;
+    font-size: 2.5vw;
 }
 #Gas {
     background-color: #0ACF41;
@@ -36,7 +36,7 @@ h2{
 #Gas, #Trash {
     color: white;
     border-radius: 25px;
-    font-size: 150px;
+    font-size: 15vw;
     border: none;
 }
 .reaction-panel {
