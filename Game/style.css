@@ -16,6 +16,10 @@ h2{
     text-align: center;
     font-size: 2em;
 }
+h1, h2 {
+    position: relative;
+    z-index: 2;
+}
 #Gas {
     background-color: #0ACF41;
 }
@@ -69,6 +73,8 @@ h2{
     padding: 0;
     transition: background-color 0.3s ease, transform 0.2s ease;
     cursor: pointer;
+    position: relative;
+    z-index: 2;
 }
 
 .reaction-btn button:hover {
@@ -123,4 +129,21 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100%);
+        opacity: 50%;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0%;
+    }
+}
+
+#fallingButton {
+    position: fixed;
+    top: -3%;
+    animation: fall 4.5s ease-in-out;
 }

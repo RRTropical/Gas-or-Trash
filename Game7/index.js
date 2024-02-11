@@ -3,48 +3,35 @@ const trashButton = document.getElementById('Trash')
 const gameText = document.getElementById('gameName')
 let figureElement = null
 
-gasButton.addEventListener('click', getMovie)
-trashButton.addEventListener('click', getMovie)
+gasButton.addEventListener('click', getCharacter)
+trashButton.addEventListener('click', getCharacter)
 
-async function getMovie() {
-  const apiKey = '43245e4a7672fe10cdaec2ec5bd00037'
-  const apiUrl = 'https://api.themoviedb.org/3/discover/movie'
+async function getCharacter() {
+  try {
+    const randomId = Math.floor(Math.random() * 731) + 1
 
-  let isValid = false
-  let movieData
+    const apiUrl = `https://www.superheroapi.com/api.php/10230191613989593/${randomId}/image`
+    
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        const name = data.name
+        const image = data.url
+        gameText.innerText = name
+        createFigureWithImages(image)
+      })
+      .catch(error => console.error('Error:', error))
+  } catch (error) {
+    console.error('There was a problem:', error)
+  }
+}
 
-  while (!isValid) {
-    try {
-      const randomPage = Math.floor(Math.random() * 1000) + 1
-      const response = await fetch(`${apiUrl}?api_key=${apiKey}&page=${randomPage}&page_size=1`)
-      
-      if (!response.ok) {
-        throw new Error('Network response was not ok')
-      }
-
-      movieData = await response.json()
-      if (movieData.results && movieData.results.length > 0) {
-        isValid = true
-      }
-    } catch (error) {
-      console.error('There was a problem:', error)
-    }
+function createFigureWithImages(imageUrls) {
+  if (!Array.isArray(imageUrls)) {
+    imageUrls = [imageUrls]
   }
 
-  const randomMovie = movieData.results[0]
-  const movieId = randomMovie.id
-  gameText.innerText = `${randomMovie.title}`
-
-  const screenshotsUrl = `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${apiKey}`
-  const screenshotsResponse = await fetch(screenshotsUrl)
-  if (!screenshotsResponse.ok) {
-    console.error('Failed to fetch movie screenshots')
-    return
-  }
-  const screenshotsData = await screenshotsResponse.json()
-  const screenshots = screenshotsData.backdrops.slice(0, 3)
-
-  if (figureElement) {
+  if (figureElement && figureElement.parentNode === document.body) {
     document.body.removeChild(figureElement)
   }
 
@@ -54,10 +41,10 @@ async function getMovie() {
   figureElement.style.alignItems = 'center'
   figureElement.style.gap = '10px'
 
-  screenshots.forEach(screenshot => {
+  imageUrls.forEach(url => {
     const imgElement = document.createElement('img')
-    imgElement.src = `https://image.tmdb.org/t/p/w500/${screenshot.file_path}`
-    imgElement.alt = 'Movie Screenshot'
+    imgElement.src = url.trim()
+    imgElement.alt = 'Food Image'
     imgElement.style.width = '300px'
     imgElement.style.height = '200px'
 
@@ -70,7 +57,8 @@ async function getMovie() {
 
   document.body.appendChild(figureElement)
 }
-getMovie()
+
+getCharacter()
 
 buttonSelection = 1
 function spawnFallingButton() {
