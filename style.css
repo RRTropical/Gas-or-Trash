@@ -2,11 +2,13 @@ body {
     background-color: rgb(26, 25, 25);
 }
 h1, h3 {
+    position: relative;
     color: white;
     font-family: 'Rubik', sans-serif;
     margin-bottom: 10px;
     text-align: center;
     font-size: 2em;
+    z-index: 2;
 }
 h3 {
     max-width: 1500px;
@@ -14,6 +16,7 @@ h3 {
     margin-right: auto;
 }
 button {
+    position: relative;
     height: 55px;
     width: 200px;
     color: #3b3434;
@@ -26,9 +29,24 @@ button {
     margin-top: 25px;
     transition: background-color 0.3s ease, transform 0.2s ease;
     cursor: pointer;
+    z-index: 2;
 }
 button:hover {
     background-color: lightgray;
     transform: scale(1.1);
     box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+}
+@keyframes fall {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+#fallingButton {
+    position: fixed;
+    top: -3%;
+    animation: fall 4.5s ease-in-out;
 }

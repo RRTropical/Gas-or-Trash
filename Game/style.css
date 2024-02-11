@@ -1,6 +1,9 @@
 body {
     background-color: rgb(26, 25, 25);
 }
+html, body {
+    overflow-x: hidden;
+}
 h1{
     color: white;
     font-family: 'Rubik', sans-serif;
