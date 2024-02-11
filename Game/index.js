@@ -1,10 +1,13 @@
 const gasButton = document.getElementById('Gas')
 const trashButton = document.getElementById('Trash')
+const skipButton = document.getElementById('skip')
 const gameText = document.getElementById('gameName')
 let figureElement = null
 
 gasButton.addEventListener('click', getRandomGame)
 trashButton.addEventListener('click', getRandomGame)
+skipButton.addEventListener('click', getRandomGame)
+
 
 async function getRandomGame() {
     if (figureElement) {

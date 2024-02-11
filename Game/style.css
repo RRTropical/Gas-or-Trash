@@ -88,7 +88,7 @@ img {
 img.loaded {
     opacity: 1;
 }
-#byebye {
+#byebye{
     height: 55px;
     width: 200px;
     color: #3b3434;
@@ -101,11 +101,31 @@ img.loaded {
     margin-top: 25px;
     transition: background-color 0.3s ease, transform 0.2s ease;
     cursor: pointer;
-    position: fixed;
-    bottom: 0;
+    position: absolute;
+    left: 1%;
+    bottom: .5%;
     width: 10%;
 }
-#byebye:hover {
+#skip{
+    height: 55px;
+    width: 200px;
+    color: #3b3434;
+    font-size: 20px;
+    background-color: white;
+    border-radius: 50px;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    margin-top: 25px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    position: absolute;
+    bottom: .5%;
+    right: 1%;
+    width: 10%;
+    z-index: 2;
+}
+#byebye:hover, #skip:hover {
     background-color: lightgray;
     transform: scale(1.1);
     box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);

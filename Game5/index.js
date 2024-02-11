@@ -1,5 +1,6 @@
 const gasButton = document.getElementById('Gas')
 const trashButton = document.getElementById('Trash')
+const skipButton = document.getElementById('skip')
 const gameText = document.getElementById('gameName')
 let previousSongLink
 
@@ -8,6 +9,10 @@ gasButton.addEventListener('click', () => {
 })
 
 trashButton.addEventListener('click', () => {
+    addSongLink()
+})
+
+skipButton.addEventListener('click', () => {
     addSongLink()
 })
 

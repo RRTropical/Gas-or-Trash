@@ -1,10 +1,12 @@
 const gasButton = document.getElementById('Gas')
 const trashButton = document.getElementById('Trash')
+const skipButton = document.getElementById('skip')
 const gameText = document.getElementById('gameName')
 let figureElement = null
 
 gasButton.addEventListener('click', getFood)
 trashButton.addEventListener('click', getFood)
+skipButton.addEventListener('click', getFood)
 
 async function getFood() {
   const apiKey = '6146cfac4cc74bba86d9712c11b7efd1'

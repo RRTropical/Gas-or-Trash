@@ -1,5 +1,6 @@
 const gasButton = document.getElementById('Gas')
 const trashButton = document.getElementById('Trash')
+const skipButton = document.getElementById('skip')
 const gameText = document.getElementById('gameName')
 
 gasButton.addEventListener('click', () => {
@@ -10,6 +11,9 @@ trashButton.addEventListener('click', () => {
     getImage()
 })
 
+skipButton.addEventListener('click', () => {
+    getImage()
+})
 function getImage() {
     const randomPage = Math.floor(Math.random() * 1000) + 1
     const apiUrl = `https://picsum.photos/v2/list?page=${randomPage}&limit=1&random=${Date.now()}`
