@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Gas or Trash</title>
-    <meta name="description" content="Gas or Trash is a game where you rate things by saying if they are Gas or if they are Trash.">
+    <meta name="description"
+        content="Gas or Trash is a game where you rate things by saying if they are Gas or if they are Trash.">
     <meta itemprop="name" content="Gas or Trash">
-    <meta itemprop="description" content="Gas or Trash is a game where you rate things by saying if they are Gas or if they are Trash.">
+    <meta itemprop="description"
+        content="Gas or Trash is a game where you rate things by saying if they are Gas or if they are Trash.">
     <meta itemprop="image" content="http://rrtropical.github.io/Gas-or-Trash/cover.png">
     <meta property="og:url" content="https://rrtropical.github.io/Gas-or-Trash">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Gas or Trash">
-    <meta property="og:description" content="Gas or Trash is a game where you rate things by saying if they are Gas or if they are Trash.">
+    <meta property="og:description"
+        content="Gas or Trash is a game where you rate things by saying if they are Gas or if they are Trash.">
     <meta property="og:image" content="http://rrtropical.github.io/Gas-or-Trash/cover.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Gas or Trash">
-    <meta name="twitter:description" content="Gas or Trash is a game where you rate things by saying if they are Gas or if they are Trash.">
+    <meta name="twitter:description"
+        content="Gas or Trash is a game where you rate things by saying if they are Gas or if they are Trash.">
     <meta name="twitter:image" content="http://rrtropical.github.io/Gas-or-Trash/cover.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,9 +28,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 </head>
+
 <body>
     <script>
-        function startGame(path){
+        function startGame(path) {
             window.open(path, '_self')
         }
         buttonSelection = 1
@@ -52,15 +58,19 @@
         }
         setInterval(spawnFallingButton, 250)
     </script>
-    <h1>Gas or Trash</h1>
-    <h3>Gas or Trash is a game where you rate things by saying if they are "Gas" or if they are "Trash."</h3>
-    <button onclick="startGame('Game/index.html')">RATE VIDEO GAMES</button>
-    <button onclick="startGame('Game5/index.html')">RATE MUSIC</button>
-    <button onclick="startGame('Game2/index.html')">RATE MOVIES</button>
-    <button onclick="startGame('Game3/index.html')">RATE TV SHOWS</button>
-    <button onclick="startGame('Game4/index.html')">RATE FOOD</button>
-    <button onclick="startGame('Game6/index.html')">RATE IMAGES</button>
-    <button onclick="startGame('Game7/index.html')">RATE SUPERHEROES</button>
-    <button onclick="startGame('Credits/index.html')" style="position: fixed; bottom: 0; width: 10%;">CREDITS</button>
+    <div class="nav">
+            <h1>Gas or Trash</h1>
+    </div>
+    <div class="gamebtns">
+        <button class="gamebtn" onclick="startGame('Game/index.html')"><img src="/images/icons8-game-120.png">VIDEOGAMES</button>
+        <button class="gamebtn" onclick="startGame('Game5/index.html')"><img src="/images/icons8-music-120.png">MUSIC</button>
+        <button class="gamebtn" onclick="startGame('Game2/index.html')"><img src="/images/icons8-documentary-100.png">MOVIES</button>
+        <button class="gamebtn" onclick="startGame('Game3/index.html')"><img src="/images/icons8-retro-tv-100.png">TV SHOWS</button>
+        <button class="gamebtn" onclick="startGame('Game4/index.html')"><img src="/images/icons8-bread-100.png">FOOD</button>
+        <button class="gamebtn" onclick="startGame('Game6/index.html')"><img src="/images/icons8-picture-120.png">IMAGES</button>
+        <button class="gamebtn" onclick="startGame('Game7/index.html')"><img src="/images/icons8-superhero-100.png">SUPER HEROES</button>
+        <button class="gamebtn" onclick="startGame('Credits/index.html')"><img src="/images/icons8-info-100.png">CREDITS</button>
+    </div>
 </body>
+
 </html>
